@@ -1,0 +1,183 @@
+/** Navbar Section */
+nav.navbar {
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0 .5rem 1rem #0000001a;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(173, 169, 150, .5);
+    background: -webkit-linear-gradient(to right, rgba(234, 234, 234, .5), rgba(219, 219, 219, .5), rgba(242, 242, 242, .5), rgba(173, 169, 150, .5));
+    background: linear-gradient(to right, rgba(234, 234, 234, .5), rgba(219, 219, 219, .5), rgba(242, 242, 242, .5), rgba(173, 169, 150, .5));
+}
+
+nav.navbar .navbar-brand {
+    width: 90px;
+}
+
+nav.navbar .navbar-nav .nav-link {
+    position: relative;
+    padding: 10px;
+    letter-spacing: 1.5px;
+}
+nav.navbar .navbar-nav .nav-link.active{
+    color: var(--main-color);
+}
+nav.navbar .navbar-nav .nav-link::after,
+nav.navbar .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 25%;
+    height: 25%;
+    background-color: transparent;
+    transition-duration: var(--duration);
+    opacity: 0;
+}
+nav.navbar .navbar-nav .nav-link::after {
+    border-bottom: 1px solid var(--main-color);
+    border-right: 1px solid var(--main-color);
+    bottom: 0;
+    right: -15%;
+}
+nav.navbar .navbar-nav .nav-link.active::after,
+nav.navbar .navbar-nav .nav-link:hover::after {
+    right: 0;
+    opacity: 1;
+}
+nav.navbar .navbar-nav .nav-link::before {
+    border-top: 1px solid var(--main-color);
+    border-left: 1px solid var(--main-color);
+    top: 0;
+    left: -15%;
+}
+nav.navbar .navbar-nav .nav-link.active::before,
+nav.navbar .navbar-nav .nav-link:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+nav.navbar .icons li{
+    color: #777;
+    transition-duration: var(--duration);
+}
+nav.navbar .icons li:hover {
+    color: var(--main-color);
+}
+
+/** Header Section */
+header .m-carousel {
+    position: relative;
+}
+
+/* & Buttons */
+header>button {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+#Home>button:nth-of-type(1) {
+    left: 30px;
+}
+
+#Home>button:nth-of-type(2) {
+    right: 30px;
+}
+
+/* & carousel items */
+header .m-carousel .m-carousel-item {
+    position: absolute;
+}
+
+header .m-carousel .m-carousel-item:nth-of-type(1) {
+    background-image: url("../images/home-bg-1.jpg");
+}
+
+header .m-carousel .m-carousel-item:nth-of-type(2) {
+    background-image: url("../images/home-bg-2.jpg");
+}
+
+header .m-carousel .m-carousel-item:nth-of-type(3) {
+    background-image: url("../images/home-bg-3.jpg");
+}
+
+/*& Part 1 */
+header .m-carousel .m-carousel-item .part-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header .m-carousel .m-carousel-item .part-1 .content {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: .8s;
+}
+
+header .m-carousel .m-carousel-item.show-carousel .part-1 .content {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+header .m-carousel .m-carousel-item .part-1 .content h2 {
+    color: #2C2C54;
+}
+
+header .part-1 a {
+    width: fit-content;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    letter-spacing: 1.5px;
+}
+
+header .part-1 p {
+    width: 90%;
+}
+
+/*& Part 2 */
+header .m-carousel .m-carousel-item .part-2 {
+    position: relative;
+}
+
+header .m-carousel .m-carousel-item .part-2 img:nth-of-type(1) {
+    position: relative;
+    top: 50%;
+    transform: translate(-10%, -100%);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: .3s;
+}
+
+header .m-carousel .m-carousel-item.show-carousel .part-2 img:nth-of-type(1) {
+    transform: translate(-10%, -70%);
+    opacity: 1;
+
+}
+
+header .m-carousel .m-carousel-item .part-2 img:nth-of-type(2) {
+    position: absolute;
+    width: 110%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%) rotate(0deg) scale(.5);
+    opacity: 0;
+    transition-duration: 1s;
+}
+
+header .m-carousel .m-carousel-item.show-carousel .part-2 img:nth-of-type(2) {
+    transform: translate(-45%, -50%) rotate(-35deg) scale(1);
+    opacity: 1;
+}

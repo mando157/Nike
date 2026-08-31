@@ -1,11 +1,18 @@
 :root {
-    --main-color: #fff;
+    --main-color: #FB3738;
+    --first-color: #FB3738;
+    --second-color: #0F7AD7;
+    --third-color: #ED9721;
+
+    --duration: .5s;
+}
+
+* {
+    font-family: "Nunito", sans-serif;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: var(--main-gradient);
-    color: #fff;
+    overflow-x: hidden;
 }
 
 a {
@@ -19,4 +26,55 @@ li {
 
 section {
     padding: 25px 0;
+}
+
+/** Loading Section */
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 1s;
+    opacity: 1;
+}
+.loading img {
+    width: 500px;
+}
+.loading.hide {
+    opacity: 0;
+}
+
+.main-color {
+    color: var(--main-color);
+}
+
+.show-carousel {
+    z-index: 3;
+}
+
+.hover-effect {
+    transition-duration: var(--duration);
+}
+
+.hover-effect:hover {
+    color: #fff;
+    background-color: var(--main-color);
+}
+
+.title img {
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%  ,-50% );
+}
+.title  h2 {
+    position: relative;
+}
+section {
+    padding: 50px 0px;
 }
