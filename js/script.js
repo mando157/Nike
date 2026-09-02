@@ -13,7 +13,11 @@ let
     browserLogo = document.querySelector("link[rel='icon']"),
     titleSectionImg = document.querySelector(".title img"),
 
-    loadingGif = document.querySelector(".loading");
+    loadingGif = document.querySelector(".loading"),
+
+    navbar = document.querySelector("nav.navbar"),
+    navLinks = navbar.querySelectorAll(".nav-link");
+
 
 // ^ Loading Section
 window.addEventListener("DOMContentLoaded", function () {
@@ -21,7 +25,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(function () {
         loadingGif.classList.add("d-none");
-    }, 1000)
+    }, 1000);
 })
 
 // ^ Next and Previous Buttons
@@ -57,4 +61,30 @@ prevBtn.addEventListener("click", function () {
     changeImg(prevDataName, titleSectionImg, "correct", "src");
     changeImg(prevDataName, browserLogo, "logo", "href");
 
+});
+
+// ^ Navbar Scroll
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+// ^ Scroll Section
+navLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        let currentNavLink = navbar.querySelector(".nav-link.active"),
+        currentId = link.getAttribute("href"),
+        currentSection = document.querySelector(currentId),
+        sectionTop = currentSection.offsetTop - navbar.clientHeight;
+
+        currentNavLink.classList.remove("active");
+        link.classList.add("active");
+
+        window.scrollTo(0 , sectionTop);
+    });
 });
