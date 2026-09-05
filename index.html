@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <!-- * loading Page * -->
     <div class="loading">
         <img src="./images/nike.gif" alt="nike">
     </div>
@@ -74,8 +75,8 @@
     <!-- * Header Section * -->
     <header id="Home">
         <!-- & Buttons & -->
-        <button class="prev hover-effect"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="next hover-effect"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
 
         <div class="m-carousel vh-100">
 
@@ -92,7 +93,7 @@
                                     Repellat Maiores Et Eos Eaque
                                     Veritatis Aut Laboriosam Earum Dolorem Iste Atque.
                                 </p>
-                                <a href="#" class="btn hover-effect">See More</a>
+                                <a href="#" class="btn mainButton">See More</a>
                             </div>
                         </div>
                         <div class="part-2 col-md-6 col-lg-6">
@@ -115,7 +116,7 @@
                                     Repellat Maiores Et Eos Eaque
                                     Veritatis Aut Laboriosam Earum Dolorem Iste Atque.
                                 </p>
-                                <a href="#" class="btn hover-effect">See More</a>
+                                <a href="#" class="btn mainButton">See More</a>
                             </div>
                         </div>
                         <div class="part-2 col-md-6 col-lg-6">
@@ -139,7 +140,7 @@
                                     Eaque
                                     Veritatis Aut Laboriosam Earum Dolorem Iste Atque.
                                 </p>
-                                <a href="#" class="btn hover-effect">See More</a>
+                                <a href="#" class="btn mainButton">See More</a>
                             </div>
                         </div>
                         <div class="part-2 col-md-6 col-lg-6">
@@ -152,26 +153,52 @@
         </div>
     </header>
 
-    <section id="Latest" class="vh-100 bg-info">
+    <!-- * Offers Section * -->
+    <div id="Offers">
+        <div class="content row w-100 g-0">
+            <div class="part-1 col-12 col-sm-6 p-0 position-relative overflow-hidden"><img
+                    src="./images/home-banner-1.png" class="img-fluid w-100" alt="banner"></div>
+            <div class="part-2 col-12 col-sm-6 p-0 position-relative overflow-hidden"><img
+                    src="./images/home-banner-2.png" class="img-fluid w-100" alt="banner"></div>
+        </div>
+    </div>
+
+    <!-- * Latest Section * -->
+    <section id="Latest">
         <div class="container">
-            <div class="title text-center position-relative w-100">
+            <div class="title text-center position-relative w-100 mb-5">
                 <img src="./images/first-correct.png" alt="correct">
                 <h2 class="display-6 fw-medium">LATEST PRODUCTS</h2>
             </div>
-        </div>
-    </section>
-    <section id="Featured" class="vh-100 bg-warning">
-        <div class="container">
-            <div class="title text-center position-relative w-100">
-                <img src="./images/first-correct.png" alt="correct">
-                <h2 class="display-6 fw-medium">FEATURE PRODUCTS</h2>
+
+            <div class="content d-flex flex-column gap-5">
             </div>
         </div>
     </section>
 
+    <!-- * Featured Section * -->
+    <section id="Featured">
+        <div class="container">
+            <div class="title text-center position-relative w-100 mb-5">
+                <img src="./images/first-correct.png" alt="correct">
+                <h2 class="display-6 fw-medium">FEATURE PRODUCTS</h2>
+            </div>
+
+            <div class="content">
+                <div class="row row-gap-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="mb-0 mx-3"> &copy; 2021 SemiCode, Ltd. | All Rights Reserved .</p>
+    </footer>
+
     <script src="./js/bootstrap.bundle.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/shoes.js"></script>
     <script src="./js/functions.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

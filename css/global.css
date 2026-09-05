@@ -13,6 +13,9 @@
 
 body {
     overflow-x: hidden;
+    background: rgb(173, 169, 150);
+    background: -webkit-linear-gradient(to right, rgb(234, 234, 234), rgb(219, 219, 219), rgb(242, 242, 242), rgb(173, 169, 150));
+    background: linear-gradient(to right, rgb(234, 234, 234), rgb(219, 219, 219), rgb(242, 242, 242), rgb(173, 169, 150));
 }
 
 a {
@@ -41,9 +44,11 @@ section {
     transition-duration: 1s;
     opacity: 1;
 }
+
 .loading img {
     width: 500px;
 }
+
 .loading.hide {
     opacity: 0;
 }
@@ -56,25 +61,39 @@ section {
     z-index: 3;
 }
 
-.hover-effect {
+.mainButton {
+    width: fit-content;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: transparent;
+    letter-spacing: 1px;
+    cursor: pointer;
     transition-duration: var(--duration);
 }
 
-.hover-effect:hover {
+.mainButton:hover,
+li.active {
     color: #fff;
     background-color: var(--main-color);
 }
 
+.mainBorder {
+    border: 1px solid var(--main-color);
+}
+
 .title img {
     position: absolute;
-    width: 300px;
+    width: 220px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%  ,-50% );
+    transform: translate(-50%, -50%);
 }
-.title  h2 {
+
+.title h2 {
     position: relative;
+    font-size: 35px;
 }
+
 section {
     padding: 50px 0px;
 }

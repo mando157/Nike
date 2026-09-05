@@ -105,6 +105,12 @@ header>button {
     background-color: transparent;
     border-radius: 50%;
     padding: 0px;
+    transition-duration: var(--duration);
+}
+
+header>button:hover {
+    color: #fff;
+    background-color: var(--main-color);
 }
 
 #Home>button:nth-of-type(1) {
@@ -168,13 +174,6 @@ header .m-carousel .m-carousel-item .part-1 .content h2 {
     color: #2C2C54;
 }
 
-header .part-1 a {
-    width: fit-content;
-    border: 1px solid var(--main-color);
-    color: var(--main-color);
-    letter-spacing:px;
-}
-
 header .part-1 p {
     width: 90%;
 }
@@ -215,4 +214,173 @@ header .m-carousel .m-carousel-item .part-2 img:nth-of-type(2) {
 header .m-carousel .m-carousel-item.show-carousel .part-2 img:nth-of-type(2) {
     transform: translate(-45%, -50%) rotate(-35deg) scale(1);
     opacity: 1;
+}
+
+/** Offer Section */
+#Offers .content [class*="part"]::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 25%;
+    height: 200%;
+    background-color: #ffffff80;
+    top: 50%;
+    right: -55%;
+    transform: translateY(-50%) rotate(-45deg);
+    transition-duration: 1s;
+}
+
+#Offers .content [class*="part"]:hover::after {
+    right: 150%;
+}
+
+#Offers .content [class*="part"] img {
+    display: block;
+    transform: scale(1.1);
+    transition-duration: 1s;
+}
+
+#Offers .content [class*="part"]:hover img {
+    transform: scale(1);
+}
+
+/** Latest Section */
+#Latest .content .part-1 .photos li {
+    cursor: pointer;
+}
+
+#Latest .content .part-1 .photos li img {
+    transition-duration: var(--duration);
+    transform: scale(.8);
+}
+
+#Latest .content .part-1 .photos li:hover img {
+    transform: scale(1.1);
+}
+
+#Latest .content .part-1 .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Latest .content .part-1 .image img {
+    width: 60%;
+    transition-duration: var(--duration);
+}
+
+#Latest .content .part-1 .image img:hover {
+    transform: scale(1.1);
+}
+
+#Latest .content .part-2 *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+#Latest .content .part-2 ul li {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/** Featured Section */
+#Featured .content .box .item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 15px #0003;
+    transition-duration: var(--duration);
+    overflow: hidden;
+    height: 350px;
+}
+
+#Featured .content .box .item:hover {
+    box-shadow: 0 10px 15px #0006;
+    transition-duration: var(--duration);
+    transform: translateY(-10px);
+}
+
+#Featured .content .box .item .discount {
+    position: absolute;
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    transform: translate(25%, 30%) rotate(45deg);
+    transition-duration: var(--duration);
+    width: 100%;
+    z-index: 3;
+}
+
+#Featured .content .box .item .image img {
+    transition-duration: var(--duration);
+    transform: scale(1);
+}
+
+#Featured .content .box .item:hover .image img {
+    transform: scale(1.2);
+}
+
+#Featured .content .box .item .search i {
+    color: #000;
+    font-size: 16px;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0 10px 15px #0003;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    cursor: pointer;
+    transition-duration: var(--duration);
+}
+
+#Featured .content .box .item:hover .search i {
+    opacity: 1;
+    transform: translateY(-30px);
+    transition-delay: .3s;
+}
+
+#Featured .content .box .item .search i:hover {
+    background-color: var(--main-color);
+    color: #fff;
+    transition-delay: 0s;
+}
+
+#Featured .content .box .item ul {
+    opacity: 0;
+    transition-duration: var(--duration);
+}
+
+#Featured .content .box .item:hover ul {
+    opacity: 1;
+    transform: translateY(-15px);
+    transition-delay: .5s;
+}
+
+#Featured .content .box ul li {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+#Featured .content .box .item .text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/** Footer Section */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0px;
 }
