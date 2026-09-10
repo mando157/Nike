@@ -28,13 +28,60 @@
 </head>
 
 <body>
+    <!-- * Login Popup * -->
+    <div class="login-popup popup" data-type="login" onclick="closePopup()">
+        <div class="login mainBgColor popup-element">
+            <i class="fa-regular fa-circle-xmark main-color" onclick="closePopup('login')"></i>
+            <h2 class="my-3 main-color">Login</h2>
+            <form action="">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="fa-regular fa-circle-user main-color"></i>
+                    </span>
+                    <input type="text" class="form-control" name="userName" id="userName" placeholder="UserName*"
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="fa-solid fa-key main-color"></i>
+                    </span>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password*"
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <button class="btn w-100 mainButton mt-3">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- * Cart Popup * -->
+    <div class="cart-popup popup" data-type="cart" onclick="closePopup()">
+        <div class="cart mainBgColor m-4 popup-element overflow-y-scroll">
+            <i class="fa-regular fa-circle-xmark main-color" onclick="closePopup()"></i>
+            <h2 class="my-3 main-color">Shop</h2>
+
+
+            <div class="cart-content row text-start">
+            </div>
+
+            <div class="alert alert-warning no-product" role="alert">
+                There are no products
+            </div>
+        </div>
+    </div>
+
+    <!-- * Product Popup * -->
+    <div class="product-popup popup" data-type="products" onclick="closePopup()">
+        <div class="popup-element product-popup-element">
+        </div>
+    </div>
+
     <!-- * loading Page * -->
     <div class="loading">
         <img src="./images/nike.gif" alt="nike">
     </div>
 
     <!-- * Navbar Section * -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg mainBgColor">
         <div class="container">
 
             <a class="navbar-brand" href="#">
@@ -64,8 +111,8 @@
 
                 <ul class="icons d-flex gap-2 fs-5">
                     <li><i class="fa-solid fa-heart"></i></li>
-                    <li><i class="fa-solid fa-cart-shopping"></i></li>
-                    <li><i class="fa-solid fa-user"></i></li>
+                    <li><i class="fa-solid fa-cart-shopping cart-icon" onclick="showCardsIntoCart()"></i></li>
+                    <li><i class="fa-solid fa-user login-icon" onclick="openPopup('login')"></i></li>
                 </ul>
 
             </div>
@@ -191,6 +238,7 @@
         </div>
     </section>
 
+    <!-- * Footer Section * -->
     <footer>
         <p class="mb-0 mx-3"> &copy; 2021 SemiCode, Ltd. | All Rights Reserved .</p>
     </footer>

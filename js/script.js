@@ -11,7 +11,7 @@ let
 
     logoImg = document.querySelector(".navbar-brand img"),
     browserLogo = document.querySelector("link[rel='icon']"),
-    titleSectionImg = document.querySelector(".title img"),
+    titleSectionImg = document.querySelectorAll(".title img"),
 
     loadingGif = document.querySelector(".loading"),
 
@@ -22,10 +22,24 @@ let
     productsContainer = document.querySelector("#Latest .content"),
 
     // ^ Featured Section variables
-    featuresContainer = document.querySelector("#Featured .content .row")
+    featuresContainer = document.querySelector("#Featured .content .row"),
 
-    ;
+    loginIcon = document.querySelector("nav.navbar .collapse .icons .login-icon"),
+    cartIcon = document.querySelector("nav.navbar .collapse .icons .cart-icon"),
 
+    allPopUpEle = document.querySelectorAll(".popup .popup-element"),
+        noProductAlert = document.querySelector(".no-product"),
+
+    // ^ Add To Cart
+    addProductToCart = [];
+
+
+// ^ LocalStorage
+if (localStorage.getItem("addProductToCart") === null) {
+    updateLocalStorage();
+} else {
+    addProductToCart = JSON.parse(localStorage.getItem("addProductToCart"));
+}
 
 // ^ Loading Section
 window.addEventListener("DOMContentLoaded", function () {
@@ -49,9 +63,11 @@ nextBtn.addEventListener("click", function () {
     // * Function Call
     changeColor(nextDataName);
     changeImg(nextDataName, logoImg, "logo", "src");
-    changeImg(nextDataName, titleSectionImg, "correct", "src");
     changeImg(nextDataName, browserLogo, "logo", "href");
 
+    titleSectionImg.forEach((image) => {
+        changeImg(nextDataName, image, "correct", "src");
+    })
 });
 
 prevBtn.addEventListener("click", function () {
@@ -66,8 +82,11 @@ prevBtn.addEventListener("click", function () {
     // * Function Call
     changeColor(prevDataName);
     changeImg(prevDataName, logoImg, "logo", "src");
-    changeImg(prevDataName, titleSectionImg, "correct", "src");
     changeImg(prevDataName, browserLogo, "logo", "href");
+
+    titleSectionImg.forEach((image) => {
+        changeImg(prevDataName, image, "correct", "src");
+    })
 
 });
 
@@ -120,10 +139,16 @@ window.addEventListener("scroll", function () {
 // ^ Latest Section
 latest.forEach(function (product) {
 
+    let isProductIntoCart = checkCart(product.id);
+
     productsContainer.innerHTML += `
-        <div class="row mainBorder rounded-4 bg-white py-4 mx-4">
+        <div 
+            class="item row mainBorder rounded-4 bg-white py-4 mx-4"
+            data-selected-size="${isProductIntoCart?.size ?? product.sizes[0]}"
+            data-selected-color="${isProductIntoCart?.color ?? product.colors[0]}"
+        >
             <div class="part-1 col-lg-6">
-                <div class="item row">
+                <div class=" row">
                     <div class="photos col-12 col-lg-2 px-3">
                         <ul class="d-flex flex-row flex-lg-column gap-2 p-0 m-0">
                         ${createLiImgEle(product.images)}
@@ -148,11 +173,16 @@ latest.forEach(function (product) {
                 <div id="Size" class="d-flex gap-1 align-items-center">
                     <span class="fw-bolder me-2">Size :</span>
                     <ul class="d-flex gap-2 p-0 m-0">
-                        ${createLiSizeEle(product.sizes)}
+                        ${createLiSizeEle(product.sizes, isProductIntoCart)}
                     </ul>
                 </div>
 
-                <button class="add-to-cart mainButton rounded-2 p-2">Add to Cart</button>
+                ${(isProductIntoCart == null) ?
+            `<button class="add-to-cart mainButton rounded-2 p-2" onclick="addToCart(${product.id} , this)">Add to Cart</button>`
+            :
+            `<button class="add-to-cart mainButton rounded-2 p-2 remove" onclick="removeFromCart(${product.id} , this)">Remove From Cart</button>`
+        }
+
             </div>
         </div>
     `
@@ -170,7 +200,7 @@ features.forEach(function (product) {
                 </div>
 
                 <div class="search d-flex justify-content-center align-items-center rounded-circle">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass" onclick="showProduct(${product.id})"></i>
                 </div>
 
                 <ul class="d-flex justify-content-center align-items-center gap-2 list-unstyled mb-0">
@@ -191,3 +221,11 @@ features.forEach(function (product) {
         </div>
     `
 });
+
+// ^ Popup
+allPopUpEle.forEach(function (popupEle) {
+    popupEle.addEventListener("click", function (e) {
+        e.stopPropagation();
+    })
+});
+
