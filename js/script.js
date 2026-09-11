@@ -28,17 +28,18 @@ let
     cartIcon = document.querySelector("nav.navbar .collapse .icons .cart-icon"),
 
     allPopUpEle = document.querySelectorAll(".popup .popup-element"),
-        noProductAlert = document.querySelector(".no-product"),
+    noProductAlert = document.querySelector(".no-product"),
 
     // ^ Add To Cart
-    addProductToCart = [];
-
+    addProductToCart = [],
+    addToFav = [];
 
 // ^ LocalStorage
 if (localStorage.getItem("addProductToCart") === null) {
     updateLocalStorage();
 } else {
     addProductToCart = JSON.parse(localStorage.getItem("addProductToCart"));
+    addToFav = JSON.parse(localStorage.getItem("addToFav"));
 }
 
 // ^ Loading Section
@@ -143,7 +144,7 @@ latest.forEach(function (product) {
 
     productsContainer.innerHTML += `
         <div 
-            class="item row mainBorder rounded-4 bg-white py-4 mx-4"
+            class="item row mainBorder rounded-4 py-4 mx-4"
             data-selected-size="${isProductIntoCart?.size ?? product.sizes[0]}"
             data-selected-color="${isProductIntoCart?.color ?? product.colors[0]}"
         >
@@ -190,9 +191,17 @@ latest.forEach(function (product) {
 
 // ^ Featured Section
 features.forEach(function (product) {
+
     featuresContainer.innerHTML += `
         <div class="box col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="item bg-white px-4 py-3 rounded-3 text-center">
+            <div 
+                class="item bg-white px-4 py-3 rounded-3 text-center" 
+                data-loved="false"
+                data-id="${product.id}"
+                >
+
+                <i class="fa-regular fa-heart loved"></i>
+
                 <p class="discount ${(product.discount == 0) ? 'd-none' : ""}" >-${product.discount * 100}%</p>
 
                 <div class="image">
@@ -229,3 +238,41 @@ allPopUpEle.forEach(function (popupEle) {
     })
 });
 
+// ^ loved Section
+let lovedIcons = document.querySelectorAll("#Featured .item > i.loved");
+
+lovedIcons.forEach((lovedIcon) => {
+    let itemEle = lovedIcon.parentElement,
+        productId = itemEle.dataset.id;
+
+    if (localStorage.getItem(`loved-${productId}`) == "true") {
+
+        lovedIcon.classList.add("lovedColor");
+        itemEle.dataset.loved = "true";
+
+    }
+
+    lovedIcon.addEventListener("click", function () {
+
+        if (itemEle.dataset.loved == "false") {
+            // ^ Love
+            lovedIcon.classList.add("fa-beat");
+            setTimeout(() => {
+                lovedIcon.classList.remove("fa-beat");
+            }, 1000);
+            itemEle.dataset.loved = "true";
+
+            localStorage.setItem(`loved-${productId}`, "true");
+
+            lovedIcon.classList.add("lovedColor");
+        } else {
+            // ^ Unlove
+            lovedIcon.classList.remove("lovedColor");
+
+            itemEle.dataset.loved = "false";
+            localStorage.removeItem(`loved-${productId}`);
+
+        }
+
+    });
+});

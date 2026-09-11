@@ -69,6 +69,74 @@
         </div>
     </div>
 
+    <!-- * Loved Popup * -->
+    <div class="loved-popup popup" data-type="loved" onclick="closePopup()">
+        <div class="loved-element mainBgColor m-4 overflow-y-scroll popup-element">
+            <i class="fa-regular fa-circle-xmark main-color" onclick="closePopup()"></i>
+            <h2 class="my-3 main-color">Favorites :</h2>
+
+
+            <div class="loved-content row text-start">
+                <div class="item">
+                    <div class="image">
+                        <img src="./images/products/1-1.png" class="img-fluid" alt="product">
+                        <h5>Basketball Shoes</h5>
+                    </div>
+                    <div class="text">
+
+                        <p id="Price" class="d-flex mb-0">
+                            <span class="fw-bolder me-2">Price</span>
+                            <span class="main-color me-1">
+                                <del>120<sup>$</sup></del>
+                            </span>
+                            <span>90<sup>$</sup></span>
+                        </p>
+
+                        <div id="Size" class="size d-flex gap-1 align-items-center">
+                            <span class="fw-bolder me-2">Size</span>
+                            <ul class="d-flex gap-2 p-0 m-0">
+                                <li class="mainButton mainBorder rounded-2 active">
+                                    S
+                                </li>
+
+                                <li class="mainButton mainBorder rounded-2">
+                                    M
+                                </li>
+
+                                <li class="mainButton mainBorder rounded-2">
+                                    L
+                                </li>
+
+                                <li class="mainButton mainBorder rounded-2">
+                                    XL
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="Colors" class="colors d-flex gap-1 align-items-center">
+                            <span class="fw-bolder me-2">Color</span>
+                            <ul class="d-flex gap-2 p-0 m-0">
+                                <li class="rounded-circle active" style="background-color:#000;">
+                                </li>
+                                <li class="rounded-circle active" style="background-color:#0f0;">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn mainButton w-100">Find</button>
+                            <button class="btn btn-danger w-100">UnLove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="alert alert-warning no-product" role="alert">
+                There are no products
+            </div> -->
+        </div>
+    </div>
+
     <!-- * Product Popup * -->
     <div class="product-popup popup" data-type="products" onclick="closePopup()">
         <div class="popup-element product-popup-element">
@@ -110,7 +178,7 @@
                 </ul>
 
                 <ul class="icons d-flex gap-2 fs-5">
-                    <li><i class="fa-solid fa-heart"></i></li>
+                    <li><i class="fa-solid fa-heart" onclick="openPopup('loved')"></i></li>
                     <li><i class="fa-solid fa-cart-shopping cart-icon" onclick="showCardsIntoCart()"></i></li>
                     <li><i class="fa-solid fa-user login-icon" onclick="openPopup('login')"></i></li>
                 </ul>
@@ -125,12 +193,12 @@
         <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
         <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
 
-        <div class="m-carousel vh-100">
+        <div class="m-carousel">
 
             <!-- & carousel items & -->
             <div class="m-carousel-item w-100 h-100 show-carousel" data-color="first">
                 <div class="container">
-                    <div class="row">
+                    <div class="row row-gap-5">
                         <div class="part-1 col-md-6 col-lg-6">
                             <div class="content">
                                 <h5 class="main-color mt-5 mt-0">Nike Red Shoes</h5>

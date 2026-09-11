@@ -268,6 +268,7 @@ function changeSelectedColor(color, that) {
 // ^ Updating LocalStorage
 function updateLocalStorage() {
     localStorage.setItem("addProductToCart", JSON.stringify(addProductToCart));
+    localStorage.setItem("addToFav", JSON.stringify(addToFav));
 }
 
 // ^ Check Products Into Cart
